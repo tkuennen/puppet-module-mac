@@ -5,7 +5,7 @@ class mac::keyboard($layout="us") {
 
   file { "/etc/default/keyboard":
     content => template("mac/keyboard.erb"),
-    notify  => "realize-keyboard",
+    notify  => Exec["realize-keyboard"],
     require => Package["keyboard-configuration"],
   }
 
